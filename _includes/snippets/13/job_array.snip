@@ -1,0 +1,76 @@
+### Job arrays
+
+Job arrays allow many jobs to run from the same job script but each run has different environment variables to allow different actions to take place.
+For example to process a list of files each job will be given an index that gives it a file to process.
+
+Due to the possibility to submit many hundreds of jobs, to get access to job arrays you will need to **request access** to the feature and provide
+us with the maximum number of job arrays you may want to submit.  This will add you and your project code to a Quality of Service (QOS) in SLURM
+to special limits for your particular job array request.
+
+Hawk:
+```
+[{{ site.host_prompt }} {{ site.sched_submit }} {{ site.sched_submit_options }} --array=1-10 example-job.sh
+```
+{: .bash}
+Sunbird:
+```
+[{{ site.host_prompt2 }} {{ site.sched_submit2 }} {{ site.sched_submit_options2 }} --array=1-10 example-job.sh
+```
+{: .bash}
+```
+Submitted batch job 16574785
+```
+{: .output}
+
+This will submit the job 10 times.
+
+```
+{{ site.host_prompt }} {{ site.sched_status }} {{ site.sched_flag_user }}
+```
+{: .bash}
+```
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+        16574785_1 c_compute new_name c.userna  R       0:38      1 ccs9002
+        16574785_2 c_compute new_name c.userna  R       0:38      1 ccs9002
+        ...
+        16574785_10 c_compute new_name c.userna  R       0:38      1 ccs9002
+```
+{: .output}
+
+Note the unique jobid for each array job.
+
+|BASH Environment Variable | SBATCH Field Code | Description |
+|--------------------------|-------------------|-------------|
+| $SLURM_JOB_ID | %J | Job identifier |
+| $SLURM_ARRAY_JOB_ID	| %A | Array parent job identifier |
+| $SLURM_ARRAY_TASK_ID | %a | Array job iteration index |
+
+Using the above variables in a job script gives you variable you can use to point to unique work to do for each job.
+
+```
+#!/bin/bash
+
+#SBATCH -J arraytest
+#SBATCH --array=0-4
+#SBATCH -o output-%A_%a-%J.o
+#SBATCH -n 1
+
+echo SLURM_JOB_ID $SLURM_JOB_ID
+echo SLURM_ARRAY_JOB_ID $SLURM_ARRAY_JOB_ID
+echo SLURM_ARRAY_TASK_ID $SLURM_ARRAY_TASK_ID
+```
+{: .bash}
+
+Submitting the above job script will result in output for each job in the array with unique values.
+
+```
+SLURM_JOB_ID 232
+SLURM_ARRAY_JOB_ID 231
+SLURM_ARRAY_TASK_ID 0
+
+SLURM_JOB_ID 233
+SLURM_ARRAY_JOB_ID 231
+SLURM_ARRAY_TASK_ID 1
+...
+```
+{: .output}

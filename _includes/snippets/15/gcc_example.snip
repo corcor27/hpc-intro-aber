@@ -1,0 +1,74 @@
+Let's take a closer look at the `compiler/gnu` module. GCC is an extremely widely used C/C++/Fortran
+compiler. Tons of software is dependent on the GCC version, and might not compile or run if the
+wrong version is loaded. In this case, there are versions from: `compiler/gnu/4/8.5` to
+`compiler/gcc/9/2.0`. How do we load each copy and which copy is the default?
+
+In this case, `compiler/gcc/9/2.0` is the latest version. This indicates that it is the default - if we type
+`module load compiler/gnu`, this is the copy that will be loaded.
+
+```
+{{ site.host_prompt }} module load compiler/gnu
+{{ site.host_prompt }} gcc --version
+```
+{: .bash}
+```
+gcc (GCC) 9.2.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+```
+{: .output}
+
+This module system just loaded the GCC compilers into the environment, you can mix multiple compilers (if Intel C++
+requires a recent GCC compiler for C++ compatability) it can be done.  Some other module systems have more login
+available to automatically unload modules if conflicts are detected but not currently used on Hawk.
+
+Now lets switch to a new compiler. Either using:
+```
+{{ site.host_prompt }} module unload compiler
+{{ site.host_prompt }} module load compiler/gnu/4/8.5
+{{ site.host_prompt }} module list
+{{ site.host_prompt }} gcc --version
+```
+{: .bash}
+
+Alternatively using the `module switch` command.
+
+```
+{{ site.host_prompt }} module switch compiler/gnu/4/8.5
+```
+{: .bash}
+
+```
+Currently Loaded Modulefiles:
+  1) system/auto          2) compiler/gnu/4/8.5
+
+gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-36)
+Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+```
+{: .output}
+
+We now have successfully switched from GCC 9.2.0 to GCC 4.8.5.
+
+Some modules have ```(default)``` at the end of the module listing in avail. For example for ```python```
+
+```
+{{ site.host_prompt }} module avail python
+```
+{: .bash}
+```
+
+--------------------------- /apps/modules/languages ----------------------------
+python/3.5.9             python/3.7.7-intel2020u1 python-numpy/1.14.5
+python/3.6.3-intel2018u3 python-h5py/2.8.0        python-pyside/1.2.4
+python/3.6.9-intel2019u5 python-matplotlib/2.2.2  python-scipy/1.1.0
+python/3.7.0(default)    python-mayavi/4.6.0      python-vtk/8.1.0
+```
+{: .output}
+
+In this case ```python/3.7.0``` is the default package.
+
