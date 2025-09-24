@@ -76,9 +76,9 @@ instructor_post_survey: "https://www.surveymonkey.com/r/instructor_training_post
 #
 host_name: "cl1"
 host_name2: "sl2.sunbird.supercomputingwales.ac.uk"
-host_login: "hawklogin.cf.ac.uk"
+host_login: "bert.aber.ac.uk"
 host_login2: "sunbird.swansea.ac.uk"
-host_location: "Cardiff University"
+host_location: "Aberystwyth University"
 host_location2: "Swansea University"
 host_homedir: "/home"
 host_prompt: "[yourUsername@cl1 ~]$"

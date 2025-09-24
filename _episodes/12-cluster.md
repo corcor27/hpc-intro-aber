@@ -31,17 +31,12 @@ purpose, and are used to accomplish tasks that might otherwise be too big for an
 
 ## Logging in
 
-Go ahead and log in to the Hawk cluster: {{ site.host_name }} at {{ site.host_location }}.
+Go ahead and log in to the Aberystwyth HPC cluster: {{ site.host_name }} at {{ site.host_location }}.
 ```
 {{ site.local_prompt }} ssh yourUsername@{{ site.host_login }}
 ```
 {: .bash}
 
-If from Aberystwyth, try the Sunbird cluster instead: {{ site.host_name2 }} at {{ site.host_location2 }}.
-```
-{{ site.local_prompt }} ssh a.yourUsername@{{ site.host_login2 }}
-```
-{: .bash}
 Remember to replace `yourUsername` with the username supplied by the instructors. You will be asked for
 your password. But watch out, the characters you type are not displayed on the screen.
 
@@ -55,9 +50,9 @@ your password. But watch out, the characters you type are not displayed on the s
 > 
 > ```
 > Host hawk
-> Hostname hawklogin.cf.ac.uk
-> User c.username
-> IdentityFile ~/.ssh/id_rsa-hawk
+> Hostname bert.aber.ac.uk
+> User username
+> IdentityFile ~/.ssh/id_rsa-aber
 > ForwardX11 yes
 > ForwardX11Trusted yes
 > ```
@@ -99,7 +94,7 @@ entire computing cluster. So what's really happening? What computer have we logg
 of the current computer we are logged onto can be checked with the `hostname` command. (You may also
 notice that the current hostname is also part of our prompt!)
 
-Hawk:
+Aber:
 ```
 {{ site.host_prompt}} hostname
 ```
@@ -110,17 +105,7 @@ Hawk:
 ```
 {: .output}
 
-Sunbird:
 
-```
-{{ site.host_prompt2}} hostname
-```
-{: .bash}
-
-```
-{{ site.host_name2 }}
-```
-{: .output}
 
 ## Nodes
 
@@ -147,16 +132,12 @@ For example, we can view all of the worker nodes with the `{{ site.sched_info }}
 {{ site.host_prompt}} {{ site.sched_info }}
 ```
 {: .bash}
-Hawk:
+Aber:
 ```
 {% include /snippets/12/info.snip %}
 ```
 {: .output}
-Sunbird:
-```
-{% include /snippets/12/info_sunbird.snip %}
-```
-{: .output}
+
 
 There are also specialized machines used for managing disk storage, user authentication, and other
 infrastructure-related tasks. Although we do not typically logon to or interact with these machines
