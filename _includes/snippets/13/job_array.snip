@@ -7,16 +7,12 @@ Due to the possibility to submit many hundreds of jobs, to get access to job arr
 us with the maximum number of job arrays you may want to submit.  This will add you and your project code to a Quality of Service (QOS) in SLURM
 to special limits for your particular job array request.
 
-Hawk:
+
 ```
 [{{ site.host_prompt }} {{ site.sched_submit }} {{ site.sched_submit_options }} --array=1-10 example-job.sh
 ```
 {: .bash}
-Sunbird:
-```
-[{{ site.host_prompt2 }} {{ site.sched_submit2 }} {{ site.sched_submit_options2 }} --array=1-10 example-job.sh
-```
-{: .bash}
+
 ```
 Submitted batch job 16574785
 ```
@@ -30,10 +26,10 @@ This will submit the job 10 times.
 {: .bash}
 ```
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-        16574785_1 c_compute new_name c.userna  R       0:38      1 ccs9002
-        16574785_2 c_compute new_name c.userna  R       0:38      1 ccs9002
+        16574785_1 cpu        new_name userna  R       0:38      1 none
+        16574785_2 cpu        new_name userna  R       0:38      1 none
         ...
-        16574785_10 c_compute new_name c.userna  R       0:38      1 ccs9002
+        16574785_10 cpu       new_name userna  R       0:38      1 none
 ```
 {: .output}
 
