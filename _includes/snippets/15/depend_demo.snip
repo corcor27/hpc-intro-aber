@@ -5,61 +5,31 @@ To demonstrate, let's use `module list`. `module list` shows all loaded software
 ```
 {: .bash}
 ```
-Currently Loaded Modulefiles:
-  1) system/auto             3) python/3.7.0
-  2) compiler/intel/2018/2
+Currently Loaded Modules:
+  1) lmod   2) slurm/22.05.2-1   3) python/3.11.1
 ```
 {: .output}
-Hawk:
+
 ```
-{{ site.host_prompt }} module load plink
+{{ site.host_prompt }} module load BLAST/blast-2.2.31+
 {{ site.host_prompt }} module list
 ```
 {: .bash}
 ```
-Currently Loaded Modulefiles:
-  1) system/auto             4) mkl/2018/3
-  2) compiler/intel/2018/2   5) plink/2.0
-  3) python/3.7.0
-```
-{: .output}
-
-Sunbird:
-```
-{{ site.host_prompt2 }} module load febio
-{{ site.host_prompt2 }} module list
-```
-{: .bash}
-```
-Currently Loaded Modulefiles:
-  1) system/auto             4) mkl/2018/3
-  2) compiler/intel/2018/2   5) febio/4.0
-  3) python/3.7.0
+Currently Loaded Modules:
+  1) lmod   2) slurm/22.05.2-1   3) python/3.11.1   4) BLAST/blast-2.2.31+
 ```
 {: .output}
 
 
-So in this case, loading the `plink` module (a bioinformatics software package) or `febio` module (medical application software package), also loaded
-`mkl/2018/3` as well. Let's try unloading the `plink` or `febio` package.
 
-Hawk:
+So in this case, loading the `BLAST` module (a bioinformatics software package)  Let's try unloading the `BLAST`  package.
+
 ```
 {{ site.host_prompt }} module unload plink
 {{ site.host_prompt }} module list
 ```
 {: .bash}
-Sunbird:
-```
-{{ site.host_prompt2 }} module unload febio
-{{ site.host_prompt2 }} module list
-```
-{: .bash}
-```
-Currently Loaded Modulefiles:
-  1) system/auto             3) mkl/2018/3
-  2) compiler/intel/2018/3   4) python/3.7.0
-```
-{: .output}
 
 So using `module unload` "un-loads" a module but **NOT** its dependencies.
 If we wanted to unload everything at once, we could run `module purge` (unloads everything).
