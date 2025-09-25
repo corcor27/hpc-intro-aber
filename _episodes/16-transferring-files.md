@@ -63,40 +63,6 @@ To recursively copy a directory, we just add the `-r` (recursive) flag:
 ```
 {: .bash}
 
-> ## A note on rsync
->
-> As you gain experience with transferring files, you may find the `scp` command limiting. The
-> [rsync](https://rsync.samba.org/) utility provides advanced features for file transfer and is
-> typically faster compared to both `scp` and `sftp` (see below). It is especially useful for
-> transferring large and/or many files and creating synced backup folders.
->
-> The syntax is similar to `scp`. To transfer *to* another computer with commonly used options:
-> ```
-> [local]$ rsync -avzP /path/to/local/file.txt yourUsername@remote.computer.address:/path/on/remote/computer
-> ```
-> {: .bash}
->
-> The `a` (archive) option preserves file timestamps and permissions among other things; the `v` (verbose)
-> option gives verbose output to help monitor the transfer; the `z` (compression) option compresses
-> the file during transit to reduce size and transfer time; and the `P` (partial/progress) option
-> preserves partially transferred files in case of an interruption and also displays the progress
-> of the transfer.
->
-> To recursively copy a directory, we can use the same options:
-> ```
-> [local]$ rsync -avzP /path/to/local/dir yourUsername@remote.computer.address:/path/on/remote/computer
-> ```
-> {: .bash}
-> 
-> The `a` (archive) option implies recursion.
-> 
-> To download a file, we simply change the source and destination:
-> ```
-> [local]$ rsync -avzP yourUsername@remote.computer.address:/path/on/remote/computer/file.txt /path/to/local/
-> ```
-> {: .bash}
-{: .callout}
-
 ## Transferring files interactively with FileZilla (sftp)
 
 FileZilla is a cross-platform client for downloading and uploading files to and from a remote
@@ -111,7 +77,7 @@ hand side.
 
 To connect to the cluster, we'll just need to enter our credentials at the top of the screen:
 
-* Host: `sftp://{{ site.host_login }}` or `sftp://{{ site.host_login2 }}`
+* Host: `sftp://{{ site.host_login }}` 
 * User: Your cluster username
 * Password: Your cluster password
 * Port: (leave blank to use the default port)
@@ -124,7 +90,7 @@ to transfer files.
 
 You can copy files to/from your Supercomputing Wales home and scratch locations using the secure copy protocol (SCP) or secure file transfer protocol (SFTP) and connecting to Hawk. 
 
-Open filezilla and type ```sftp://hawklogin.cf.ac.uk``` or ```sftp://sunbird.swansea.ac.uk``` into the host box. Enter your username and password in the username/password boxes.
+Open filezilla and type ```sftp://bert.aber.ac.uk``` into the host box. Enter your username and password in the username/password boxes.
 
 ![Transferring files using FileZilla](../fig/filezilla1.png)
 

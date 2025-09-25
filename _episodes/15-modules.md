@@ -179,7 +179,7 @@ Let's examine the output of `module avail` more closely.
 ```
 {: .output}
 
-{% include /snippets/15/gcc_example.snip %}
+
 
 > ## Using software modules in scripts
 >
