@@ -74,7 +74,7 @@ instructor_post_survey: "https://www.surveymonkey.com/r/instructor_training_post
 #   and:
 #     cp -r _extras/snippet_library/EPCC_Cirrus_pbs/* _includes/snippets
 #
-host_name: "cl1"
+host_name: "login01.hpc.private"
 host_name2: "sl2.sunbird.supercomputingwales.ac.uk"
 host_login: "bert.aber.ac.uk"
 host_login2: "sunbird.swansea.ac.uk"
