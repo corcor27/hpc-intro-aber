@@ -52,15 +52,6 @@ The most basic use of the scheduler is to run a command non-interactively. Any c
 of commands) that you want to run on the cluster is called a *job*, and the process of using a
 scheduler to run the job is called *batch job submission*.
 
-> ## Project codes
-> 
-> Project codes allow the resources used to be recorded to a project and
-> provides information on what research is used which resources.  It allows
-> for focussing attention on certain projects if issues are spotted.
->
-> Can you find your available project codes on [mySCW](https://my.supercomputing.wales)?
-{: .challenge}
-
 
 In this case, the job we want to run is just a shell script. Let's create a demo shell script to 
 run as a test.
@@ -89,11 +80,7 @@ Hawk:
 [{{ site.host_prompt }} {{ site.sched_submit }} {{ site.sched_submit_options }} example-job.sh
 ```
 {: .bash}
-Sunbird:
-```
-[{{ site.host_prompt2 }} {{ site.sched_submit }} {{ site.sched_submit_options2 }} example-job.sh
-```
-{: .bash}
+
 ```
 {% include /snippets/13/submit_output.snip %}
 ```
@@ -156,7 +143,7 @@ instruction to the scheduler.
 Let's illustrate this by example. By default, a job's name is the name of the script, but the
 `{{ site.sched_flag_name }}` option can be used to change the name of a job.
 
-Submit the following job Hawk:(`{{ site.sched_submit }} {{ site.sched_submit_options }} example-job.sh`), Sunbird:(`{{ site.sched_submit }} {{ site.sched_submit_options2 }} example-job.sh`):
+Submit the following job:(`{{ site.sched_submit }} {{ site.sched_submit_options }} example-job.sh`), 
 
 ```
 #!/bin/bash --login
@@ -219,7 +206,6 @@ minutes.
 
 Submit the job and wait for it to finish. Once it is has finished, check the log file.
 
-Hawk:
 ```
 {{ site.host_prompt }} {{ site.sched_submit }} {{ site.sched_submit_options }} example-job.sh
 {{ site.host_prompt }} watch -n 60 {{ site.sched_status }} {{ site.sched_flag_user }}
@@ -227,14 +213,7 @@ Hawk:
 ```
 {: .bash}
 
-Sunbird:
 
-```
-{{ site.host_prompt2 }} {{ site.sched_submit }} {{ site.sched_submit_options2 }} example-job.sh
-{{ site.host_prompt2 }} watch -n 60 {{ site.sched_status }} {{ site.sched_flag_user }}
-{{ site.host_prompt2 }} cat slurm-38193.out
-```
-{: .bash}
 ```
 {% include /snippets/13/long_job_err.snip %}
 ```
@@ -263,12 +242,6 @@ Hawk:
 ```
 {: .bash}
 
-Sunbird:
-```
-{{ site.host_prompt2 }} {{ site.sched_submit }} {{ site.sched_submit_options2 }} example-job.sh
-{{ site.host_prompt2 }} {{ site.sched_status2 }} {{ site.sched_flag_user }}
-```
-{: .bash}
 ```
 {% include /snippets/13/del_job_output1.snip %}
 ```
