@@ -16,66 +16,6 @@ We now know virtually everything we need to know about getting stuff on a cluste
 submit different types of jobs, use preinstalled software, and install and use software of our own.
 What we need to do now is use the systems effectively.
 
-## Estimating required resources using the scheduler
-
-Although we covered requesting resources from the scheduler earlier, how do we know how much and
-what type of resources we will need in the first place?
-
-Answer: we don't. Not until we've tried it ourselves at least once. We'll need to benchmark our job
-and experiment with it before we know how much it needs in the way of resources.
-
-The most effective way of figuring out how much resources a job needs is to submit a test job, and
-then ask the scheduler how many resources it used.
-
-A good rule of thumb is to ask the scheduler for more time and memory than you expect your job to
-need. This ensures that minor fluctuations in run time or memory use will not result in your job
-being canceled by the scheduler. Recommendations for how much extra to ask for vary but 10% is 
-probably the minimum, with 20-30% being more typical. Keep in mind that if you ask for too much,
-your job may not run even though enough resources are available, because the scheduler will be
-waiting to match what you asked for.
-a
-
-{% include /snippets/17/bench.snip %}
-
-Once the job completes (note that it takes much less time than expected), we can query the 
-scheduler to see how long our job took and what resources were used. We will use `{{ site.sched_hist }}` to
-get statistics about our job.
-
-```
-{{ site.host_prompt }} {{ site.sched_hist }}
-```
-{: .bash}
-```
-{% include /snippets/17/stat_output.snip %}
-```
-{: .output}
-
-This shows all the jobs we ran recently (note that there are multiple entries per job). To get
-detailed info about a job, we change command slightly.
-
-```
-{{ site.host_prompt }} {{ site.sched_hist }} {{ site.sched_flag_histdetail }} 1965
-```
-{: .bash}
-
-It will show a lot of info, in fact, every single piece of info collected on your job by the
-scheduler. It may be useful to redirect this information to `less` to make it easier to view (use
-the left and right arrow keys to scroll through fields).
-
-```
-{{ site.host_prompt }} {{ site.sched_hist }} {{ site.sched_flag_histdetail }} 1965| less
-```
-{: .bash}
-
-Some interesting fields include the following:
-
-* **Hostname** - Where did your job run?
-* **MaxRSS** - What was the maximum amount of memory used?
-* **Elapsed** - How long did the job take?
-* **State** - What is the job currently doing/what happened to it?
-* **MaxDiskRead** - Amount of data read from disk.
-* **MaxDiskWrite** - Amount of data written to disk.
-
 ## Measuring the statistics of currently running tasks
 
 > ## Connecting to Nodes
@@ -147,9 +87,9 @@ To show all processes from your current session, type `ps`.
 ```
 {: .bash}
 ```
-  PID TTY          TIME CMD
-15113 pts/5    00:00:00 bash
-15218 pts/5    00:00:00 ps
+    PID TTY          TIME CMD
+ 789235 pts/1    00:00:00 bash
+ 789399 pts/1    00:00:00 ps
 ```
 {: .output}
 
@@ -161,10 +101,12 @@ Note that this will only show processes from our current session. To show all pr
 ```
 {: .bash}
 ```
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-auser  67780  0.0  0.0 149140  1724 pts/81   R+   13:51   0:00 ps ux
-auser  73083  0.0  0.0 142392  2136 ?        S    12:50   0:00 sshd: auser@pts/81
-auser  73087  0.0  0.0 114636  3312 pts/81   Ss   12:50   0:00 -bash
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cot13     789225  0.0  0.0  89684  9684 ?        Ss   10:03   0:00 /usr/lib/systemd/systemd --user
+cot13     789227  0.0  0.0 331448  5760 ?        S    10:03   0:00 (sd-pam)
+cot13     789234  0.0  0.0 161724  5740 ?        S    10:03   0:00 sshd: cot13@pts/1
+cot13     789235  0.0  0.0  26592  4276 pts/1    Ss   10:03   0:00 -bash
+cot13     789404  0.0  0.0  58848  3940 pts/1    R+   10:11   0:00 ps ux
 ```
 {: .output}
 
