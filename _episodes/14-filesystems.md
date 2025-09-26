@@ -28,7 +28,7 @@ There are multiple storage/filesystems options available for you to do your work
 * scratch: temporary working space. Lustre filesystem with usually faster access, not backed up. Larger quota, but old files might get deleted. DON'T STORE RESULTS HERE!
 
 
-Here's a synopsis of filesystems on Hawk in Cardiff:
+Here's a synopsis of filesystems on the cluster at Aberystwyth:
 
 |Name|Path|Default Quota|Disk Size|Backed Up|Filesystem
 |-----------------|---|----|-----|---|-----|------|
