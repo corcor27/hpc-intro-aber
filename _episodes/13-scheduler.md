@@ -108,17 +108,9 @@ reruns a given command at 2-second intervals. This is too frequent, and will lik
 administrator. You can change the interval to a more reasonable value, for example 60 seconds, with the
 `-n 60` parameter. Let's try using it to monitor another job.
 
-Hawk:
 ```
 {{ site.host_prompt }} {{ site.sched_submit }} {{ site.sched_submit_options }} example-job.sh
 {{ site.host_prompt }} watch -n 60 {{ site.sched_status }} {{ site.sched_flag_user }}
-```
-{: .bash}
-
-Sunbird:
-```
-{{ site.host_prompt2 }} {{ site.sched_submit }} {{ site.sched_submit_options2 }} example-job.sh
-{{ site.host_prompt2 }} watch -n 60 {{ site.sched_status }} {{ site.sched_flag_user }}
 ```
 {: .bash}
 
