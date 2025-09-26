@@ -49,7 +49,7 @@ your password. But watch out, the characters you type are not displayed on the s
 > On a Mac/Linux laptop/desktop you can add settings to `$HOME/.ssh/config` such as:
 > 
 > ```
-> Host hawk
+> Host login01
 > Hostname bert.aber.ac.uk
 > User username
 > IdentityFile ~/.ssh/id_rsa-aber
