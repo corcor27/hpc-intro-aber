@@ -23,9 +23,8 @@ keypoints:
 Storage on most compute systems is not what and where you think they are! Physical disks are bundled together into a virtual volume; this virtual volume may represent one filesystem, or may be divided up, or partitioned, into multiple filesystems. And your directories then reside within one of these fileystems. Filesystems are accessed over the network through mount points.
 
 There are multiple storage/filesystems options available for you to do your work. The most common are:
-
-* home: where you land when you first login. 50 GB per user. Slower access, backed up. Used to store your work long term. 
-* project: shared between all users of a project. Same filesystem as home. 
+    
+* home: where you land when you first login. 100 GB per user. Slower access, backed up. Used to store your work long term.  
 * scratch: temporary working space. Lustre filesystem with usually faster access, not backed up. Larger quota, but old files might get deleted. DON'T STORE RESULTS HERE!
 
 
@@ -33,11 +32,10 @@ Here's a synopsis of filesystems on Hawk in Cardiff:
 
 |Name|Path|Default Quota|Disk Size|Backed Up|Filesystem
 |-----------------|---|----|-----|---|-----|------|
-|Home|/hpc/user.name|100GB|100TB|Yes|NFS|
+|Home|/hpc/user.name|100GB|40TB |Yes|NFS|
 |Scratch|/scratch/user.name|N/A|100TB|No|NFS|
 
 **Important!! Ensure that you don't store anything longer than necessary on scratch, this can negatively affect other people’s jobs on the system.**
-
 
 
 # Accessing your filestore
