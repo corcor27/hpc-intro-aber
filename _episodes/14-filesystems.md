@@ -93,11 +93,11 @@ The HPC cluster uses its own dedicated storage system. You can easily mount the 
 - Domain/Workgroup: `pau`  
 - Username: `YOURUSERNAME`  
 
-> ### Windows & macOS  
+> ## Windows & macOS  
 > Please refer to the Aberystwyth FAQ for instructions on mounting network drives:  
 > [Mounting storage drives (Aber FAQ)](https://faqs.aber.ac.uk/index.php?search=m+drive)  
 {: .callout}
-> ### Linux  
+> ## Linux  
 > - **Ubuntu (via Files app):**  
 >  Go to **Files → Other Locations**, then enter the details above at the bottom of the window.  
 >
