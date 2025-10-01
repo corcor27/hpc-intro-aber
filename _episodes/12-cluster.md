@@ -29,6 +29,22 @@ media platforms), as well as more traditional "compute" resources. An *HPC syste
 is a term used to describe a network of computers. The computers in a cluster typically share a common
 purpose, and are used to accomplish tasks that might otherwise be too big for any one computer.
 
+## Network access
+
+## Network Access Requirements
+
+Over the past year, the university network has been upgraded. As a result:  
+
+- **General systems connected to eduroam** are now restricted to internet access only (e.g., web browsing).  
+- **Aber IS-supported systems** can connect to the server automatically.  
+- **All other systems** (including CS desktops) require the **Aberystwyth VPN** to access the server.  
+
+**VPN portals:**  
+- Wi-Fi (eduroam): `gp-vpn.aber.ac.uk`  
+- Ethernet: `gp-vpn-int.aber.ac.uk`  
+
+If you encounter issues setting up the VPN, please contact **Information Services (IS)** by raising a support ticket at: [is@aber.ac.uk](mailto:is@aber.ac.uk).  
+
 ## Logging in
 
 Go ahead and log in to the Aberystwyth HPC cluster: {{ site.host_name }} at {{ site.host_location }}.
