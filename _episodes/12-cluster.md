@@ -257,7 +257,7 @@ start running our scripts and programs!
 
 Below is a detailed image showing the configuration of the server along with all its partitions. 
 
-{% include figure.html max-width="30%" file="/fig/hpc_upgrade.png" 
+{% include figure.html max-width="80%" file="/fig/hpc_upgrade.png" 
 alt="Schematic of how a computer works" caption="" %}
 
 ## HPC Hardware Overview
