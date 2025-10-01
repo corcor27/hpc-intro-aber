@@ -253,4 +253,92 @@ been restarted.
 With all of this in mind, we will now cover how to talk to the cluster's scheduler, and use it to
 start running our scripts and programs!
 
+## Details about the server
+
+Below is a detailed image showing the configuration of the server along with all its partitions. 
+
+{% include figure.html max-width="30%" file="/fig/hpc_upgrade.png" 
+alt="Schematic of how a computer works" caption="" %}
+
+## HPC Hardware Overview
+
+### Bert (Log-in Node) — TDP 120W
+- **CPU:** AMD EPYC 7252 (8-Core, 120W)  
+- **Memory:** 48GB  
+
+---
+
+### Ernie (x3) — TDP 200W each | Total 600W
+- **CPU:** AMD EPYC 7552 (48-Core, 2.2GHz, 200W)  
+- **Memory:** 384GB  
+
+---
+
+### hpc-gn-ampere-01 (AM-01) — TDP 2880W
+- **GPU:** 8 × NVIDIA A100 (80GB VRAM each, 300W | 2400W total)  
+- **CPU:** 2 × AMD EPYC 7F72 (24-Core, 240W | 480W total)  
+- **Memory:** 2TB  
+
+---
+
+### hpc-ci-cascade-lake-01 (CL-01) — TDP 410W
+- **CPU:** 2 × Intel Xeon Gold 6248R (3.0GHz, 205W | 410W total)  
+- **Memory:** 1.5TB  
+
+---
+
+### hpc-gnw-ampere-02 (AM-02) — TDP 880W
+- **GPU:** 2 × NVIDIA RTX A6000 (48GB VRAM each, 300W | 600W total)  
+- **CPU:** AMD Ryzen Threadripper PRO 3975WX (280W)  
+- **Memory:** 128GB  
+
+---
+
+### hpc-gn-ampere-03 (AM-03) — TDP 2800W
+- **GPU:** 8 × NVIDIA A100 (80GB VRAM each, 300W | 2400W total)  
+- **CPU:** 2 × AMD EPYC 7702 (64-Core, 200W | 400W total)  
+- **Memory:** 2TB  
+
+---
+
+### hpc-gn-ampere-04 (AM-04) — TDP 2800W
+- **GPU:** 8 × NVIDIA A100 (80GB VRAM each, 300W | 2400W total)  
+- **CPU:** 2 × AMD EPYC 7702 (64-Core, 200W | 400W total)  
+- **Memory:** 2TB  
+
+---
+
+### hpc-gn-pascal-01 (PA-01) — TDP 625W
+- **GPU:** 2 × NVIDIA Tesla P100 (16GB VRAM each, 250W | 500W total)  
+- **CPU:** Intel Xeon Gold 6130 (2.1GHz, 125W)  
+- **Memory:** 48GB  
+- **Note:** Legacy GPU server  
+
+---
+
+### hpc-gn-hopper-01 (HO-01) — TDP 3520W
+- **GPU:** 4 × NVIDIA H100 (94GB VRAM each, 700W | 2800W total, configurable to 400W each)  
+- **CPU:** 2 × AMD EPYC Genoa 9654 (96-Core, 2.4GHz, 360W | 720W total)  
+- **Memory:** 2TB  
+
+---
+
+### Cascade Lake Cluster (CL-02 to CL-06) — TDP 250W (standard) | 750W (optional)
+- **Nodes:** CL-02, CL-03, CL-04, CL-05, CL-06  
+- **CPU (each):** 2 × Intel Xeon Gold 6254 (3.1GHz, 125W | 250W total)  
+- **Memory (each):** 768GB  
+
+---
+
+### hpc-ca-genoa-01 (GE-01) — TDP 115W
+- **CPU:** Intel Xeon E5-2620 v4 (2.1GHz, 115W)  
+- **Memory:** 1TB  
+
+---
+
+### hpc-gn-ampere-05 (AM-05) — TDP 455W
+- **GPU:** 1 × NVIDIA A100 (40GB VRAM, 300W)  
+- **CPU:** AMD EPYC 7452 (155W)  
+- **Memory:** 768GB  
+
 {% include links.md %}
